@@ -7,6 +7,11 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import os
 from twilio.rest import Client
 
+bitcoin = None
+ethereum = None
+binance = None
+thegraph = None
+chainlink = None
 
 def sendMsg(name,value):
     text = 'The Value for {name} has exceeded {value}'.format(name=name,value=value)
@@ -68,6 +73,8 @@ def sensor():
 
 sched = BackgroundScheduler(daemon=True)
 sched.add_job(sensor,'interval',seconds=10)
+sched.start()
+
 
 app = Flask(__name__)
 
